@@ -24,7 +24,7 @@ function write(events) {
             appendEvent(y, m, eventsByYear[y][m])
         }
     }
-    
+
 }
 
 function appendEvent(year, month, events){
@@ -32,15 +32,15 @@ function appendEvent(year, month, events){
     const data = new Set(readDate(filepath))
     for (const event of events){
         const date = event.date
-        const eventName = event.saleName
+        const saleName = event.saleName
         flag = true
         Array.from(data).map(e => {
-            if (e.date == date && e.eventName == eventName){
+            if (e.date == date && e.saleName == saleName){
                 flag = false
             }
         })
         if (flag) {
-            data.add({date, eventName})
+            data.add({date, saleName})
         }
     }
     writeData(filepath, Array.from(data).sort())
