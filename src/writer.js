@@ -24,6 +24,7 @@ function write(events) {
             appendEvent(y, m, eventsByYear[y][m])
         }
     }
+    
 }
 
 function appendEvent(year, month, events){
