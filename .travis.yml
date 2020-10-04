@@ -12,7 +12,7 @@ env:
 
 jobs:
   include:
-    - script npm test
+    - script: npm test
     - stage: scrape
       if: type = cron AND branch = master
       script
