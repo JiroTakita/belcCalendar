@@ -14476,3 +14476,12 @@ node_modules/yargs-parser/LICENSE.txt
 node_modules/yargs-parser/package.json
 node_modules/yargs-parser/README.md
 node_modules/yargs-parser/lib/tokenize-arg-string.js
+node_modules/cross-fetch/dist/react-native-polyfill.js
+node_modules/cross-fetch/dist/react-native-ponyfill.js
+node_modules/jest-fetch-mock/.prettierignore
+node_modules/jest-fetch-mock/tsconfig.json
+node_modules/jest-fetch-mock/.github/workflows/nodejs.yml
+node_modules/jest-fetch-mock/types/index.d.ts
+node_modules/jest-fetch-mock/types/test.ts
+node_modules/jest-fetch-mock/types/tsconfig.json
+node_modules/promise-polyfill/src/finally.js
