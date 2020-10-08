@@ -1,3 +1,4 @@
 node_modules/
 .vscode/
 enc_key
+id_enc
