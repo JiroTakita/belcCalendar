@@ -17,6 +17,6 @@ jobs:
     - git checkout master
     - npm start
     - npm test
-    - openssl aes-256-cbc -K $encrypted_845ea096a596_key -iv $encrypted_845ea096a596_iv -in id_ed25519.enc -out ~\/ssh2/id_ed25519 -d
-    - chmod 600 ~\/ssh2/id_ed25519
+    - openssl aes-256-cbc -K $encrypted_845ea096a596_key -iv $encrypted_845ea096a596_iv -in id_ed25519.enc -out ~/.ssh/id_ed25519 -d
+    - chmod 600 ~/.ssh/id_ed25519
     - "./scripts/push-if-updated.sh ./event/*.json"
