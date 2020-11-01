@@ -1,6 +1,6 @@
 # ベルクカレンダー
 
-[![Build Status](https://travis-ci.org/github/JiroTakita/belcCalendar.svg?branch=master)](https://travis-ci.org/github/JiroTakita/belcCalendar)
+[![Build Status](https://travis-ci.org/JiroTakita/belcCalendar.svg?branch=master)](https://travis-ci.org/github/JiroTakita/belcCalendar)
 > :calendar: ベルクカレンダー
 
 ## 説明
