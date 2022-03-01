@@ -31,4 +31,4 @@ jobs:
     - run: npm test
     - uses: actions/checkout@v2
     - name: Run sh
-    - run: sh ./scripts/push-if-updated.sh ./event/*.json
+      run: sh ./scripts/push-if-updated.sh ./event/*.json
