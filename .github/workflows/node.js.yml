@@ -39,7 +39,17 @@ jobs:
         git config --local user.email "takijiro0925@gmail.com"
         git config --local user.name "JiroTakita"
     - uses: actions/checkout@v2
-    - name: Run sh
-      run: sh ./scripts/push-if-updated.sh ./event/*.json
+    - name: Push auto-fixed files
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "👕 Fixed auto-fixable textlint errors by github-actions"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
