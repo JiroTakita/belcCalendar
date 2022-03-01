@@ -29,6 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: npm start
     - name: git setting
       run: |
         git config --local user.email "takijiro0925@gmail.com"
