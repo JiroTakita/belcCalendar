@@ -12,6 +12,6 @@ if git diff --exit-code HEAD "$@" && [[ -z "$(git ls-files --exclude-standard --
 else
   git config --global url.git@github.com:.pushinsteadof https://github.com/
   git add "$@"
-  git commit -m "$message"
+  git commit -m "$message" || echo "No changes to commit"
   git push origin master
 fi
