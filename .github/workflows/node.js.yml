@@ -38,7 +38,6 @@ jobs:
       run: |
         git config --local user.email "takijiro0925@gmail.com"
         git config --local user.name "JiroTakita"
-    - uses: actions/checkout@v2
     - name: Push auto-fixed files
         run: |
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
