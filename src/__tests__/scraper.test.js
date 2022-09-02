@@ -53,7 +53,7 @@ describe('.scrape()', () => {
             events.forEach(event =>{
                 test.push(event.date)
             })
-            expect(test).toEqual([year + "-"+ ('00' + month).slice(-2) + "-01", year + "-" + ('00' + month).slice(-2) + "-08"])
+            expect(test).toEqual([year + "-" + month + "-01", year + "-" + month + "-08"])
         }
     })
 })

@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/JiroTakita/belcCalendar.svg?branch=master)](https://travis-ci.org/github/JiroTakita/belcCalendar)
 > :calendar: ベルクカレンダー
 
+※20220902 ベルクHPの更新に対応　現在は流山おおたかの森限定
+
 ## 説明
 
 [ベルクカレンダー](https://www.belc.jp/product/calendar/)をスクレイピングし、Google Calendarとして公開しています  
