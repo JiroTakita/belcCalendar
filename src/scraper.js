@@ -1,33 +1,41 @@
 const { JSDOM } = require('jsdom')
 const fetch = require('node-fetch')
 
-const URL = 'https://www.belc.jp/product/calendar/'
+const URL = 'https://new.belc.jp/shop/0070' //流山おおたかの森店
 
-async function scrape(now  = new Date()){
+async function scrape(now = new Date()) {
     /** @type {response} */
     const response = await fetch(URL)
     const text = await response.text()
     const { document } = new JSDOM(text).window
-    const lists = document.querySelectorAll('ul.calendar__list')
+    const lists = document.querySelectorAll('.m-wdg-carouselCal__itm')
+console.log(lists.length)
     // date, saleName
-    const events =  []
-    Array.from(lists).map((list, index) => {
-        const year = Number.parseInt(document.querySelector('.calendar__information:nth-of-type('+ (index + 1) +') .year').textContent, 10)
-        const month = Number.parseInt(document.querySelector('.calendar__information:nth-of-type('+ (index + 1) +') .month').textContent, 10)
-        const items = list.querySelectorAll('.calendar__item')
-        Array.from(items).map(item => {
-            const eventInfos = item.querySelectorAll('.calendar__eventinfo')
-            if (eventInfos.length > 0){
-                day = Number.parseInt(item.querySelector('.calendar__date .number').textContent, 10)
-                Array.from(eventInfos).map(eventInfo => {
-                    const saleName = eventInfo.textContent
-                    const date = year + '-' + ('00' + month).slice(-2) + '-' + ('00' + day).slice(-2)
-                    events.push({date, saleName})
-                })
+    const events = []
+    const flag = false; // 年マタギフラグ
+    Array.from(lists).map(item => {
+        year = new Date();
+        year = year.getFullYear();
+        const eventInfo = item.querySelector('.m-wdg-carouselCal__lstItm')
+        if (eventInfo != null) {
+            month = item.querySelector('.m-wdg-carouselCal__dateDay').textContent.substring(0, 2)
+            day = item.querySelector('.m-wdg-carouselCal__dateDay').textContent.substring(3, 5)
+            if (month == "12") {
+                flag = true;
             }
-        })
+            if (month == "01" && flag == true) {
+                year = year + 1
+                flag = false;
+            }
 
+            const saleName = eventInfo.textContent.trim()
+            const date = year + '-' + month + '-' + day
+            console.log(saleName + " " + date);
+            events.push({ date, saleName })
+
+        }
     })
+
 
     return events
 }
