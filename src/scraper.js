@@ -12,7 +12,7 @@ async function scrape(now = new Date()) {
 console.log(lists.length)
     // date, saleName
     const events = []
-    const flag = false; // 年マタギフラグ
+    flag = false; // 年マタギフラグ
     Array.from(lists).map(item => {
         year = new Date();
         year = year.getFullYear();
