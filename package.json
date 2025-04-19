@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "belc-calendar": "file:",
     "dayjs": "^1.7.5",
     "jsdom": "^12.0.0",
     "node-fetch": "^2.2.0"
