@@ -4,38 +4,42 @@ const scraper = require('../scraper')
 
 function html(year, ...months) {
     return `
-    <section class="calendar">
-	<header class="heading">
-		<h1 class="heading--design1">お得カレンダー</h1>
-    </header>
+    <div class="m-wdg-carouselCal__content swiper-wrapper" id="swiper-wrapper-23657312ea6a6e46" aria-live="polite">
     ${months
         .map(
             (month, i) =>`
-	        <div class="calendar__information"><span class="year">${year}</span>年<span class="month">${month}</span>月<span class="info">毎日夕市開催中！</span></div>
-	        <ul class="calendar__list">
-		        <li class="calendar__item">
-			        <div class="calendar__date">
-				        <span class="number">${i + 1}</span><br><span class="dow">日曜日</span>
-			        </div>
-			        <ul class="calendar__eventlist">
-				        <li class="calendar__eventitem"><span class="calendar__eventicon" style="background-color:#ffd900;"></span><span class="calendar__eventinfo">たまごの日</span></li>
-			        </ul>
-		        </li>
-	        </ul>
-	        <div class="calendar__information"><span class="year">${year}</span>年<span class="month">${month}</span>月<span class="info">毎日夕市開催中！</span></div>
-	        <ul class="calendar__list">
-		        <li class="calendar__item">
-			        <div class="calendar__date">
-				        <span class="number">${i + 8}</span><br><span class="dow">日曜日</span>
-			        </div>
-			        <ul class="calendar__eventlist">
-				        <li class="calendar__eventitem"><span class="calendar__eventicon" style="background-color:#ffd900;"></span><span class="calendar__eventinfo">ポイント２倍デー</span></li>
-			        </ul>
-		        </li>
-            </ul>`
+            <div class="m-wdg-carouselCal__itm swiper-slide" role="group" aria-label="12 / 14">
+                <div class="m-wdg-carouselCal__date">
+                    <div class="m-wdg-carouselCal__dateInner" data-week="Fri">
+                        <span class="m-wdg-carouselCal__dateDay">${String(month).padStart(2,'0')}/${String(i + 1).padStart(2,'0')}</span>
+                        <span class="m-wdg-carouselCal__dateWeek">金</span>
+                    </div>
+                </div>
+                <ul class="m-wdg-carouselCal__lst">
+                    <li class="m-wdg-carouselCal__lstItm">
+                        <span class="m-wdg-carouselCal__bullet" style="background-color: #ff0000"></span>
+                        酒ポイント3倍
+                    </li>
+                </ul>
+            </div>
+            <div class="m-wdg-carouselCal__itm swiper-slide" role="group" aria-label="12 / 14">
+                <div class="m-wdg-carouselCal__date">
+                    <div class="m-wdg-carouselCal__dateInner" data-week="Fri">
+                        <span class="m-wdg-carouselCal__dateDay">${String(month).padStart(2,'0')}/${String(i + 8).padStart(2,'0')}</span>
+                        <span class="m-wdg-carouselCal__dateWeek">金</span>
+                    </div>
+                </div>
+                <ul class="m-wdg-carouselCal__lst">
+                    <li class="m-wdg-carouselCal__lstItm">
+                        <span class="m-wdg-carouselCal__bullet" style="background-color: #ff0000"></span>
+                        酒ポイント3倍
+                    </li>
+                </ul>
+            </div>
+            `
         ).join('')
     }
-</selction>`.trim()
+    </div>`.trim()
 }
 
 const year = new Date().getFullYear()
@@ -53,7 +57,7 @@ describe('.scrape()', () => {
             events.forEach(event =>{
                 test.push(event.date)
             })
-            expect(test).toEqual([year + "-" + month + "-01", year + "-" + month + "-08"])
+            expect(test).toEqual([year + "-" + String(month).padStart(2, '0') + "-01", year + "-" + String(month).padStart(2,'0') + "-08"])
         }
     })
 })
